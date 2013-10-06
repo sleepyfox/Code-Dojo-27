@@ -92,3 +92,13 @@ describe 'An empty half-pint glass', ->
     glass = new Half_Pint_Glass
     glass.volume.should.equal EMPTY
     glass.drink().should.equal EMPTY
+
+  it 'when quaffed from should return no liquid', ->
+    class Half_Pint_Glass
+      constructor: ->
+        @volume = EMPTY
+      drink: -> EMPTY
+      quaff: -> EMPTY
+
+    glass = new Half_Pint_Glass
+    glass.quaff().should.equal EMPTY
