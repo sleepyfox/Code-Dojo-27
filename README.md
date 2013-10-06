@@ -20,4 +20,6 @@ When the landlord fills the glass, the weights and measures act of 1963 regulate
 
 Write a simple application to keep track of customer's beer glasses and how much fluid they contain. 
 
+When you've done this then extend your solution for half-pint glasses
+When you've done this then extend your solution for three-pint jugs
 
