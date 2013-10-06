@@ -74,3 +74,12 @@ describe 'A nearly empty Pint Glass', ->
     glass.down_in_one().should.equal 3
     glass.volume.should.equal EMPTY
 
+describe 'An empty half-pint glass', ->
+  it 'should contain no liquid', ->
+    class Half_Pint_Glass
+      constructor: ->
+        @volume = 0
+        
+    glass = new Half_Pint_Glass
+    glass.volume.should.equal EMPTY
+
