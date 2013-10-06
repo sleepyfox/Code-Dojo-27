@@ -4,11 +4,10 @@ EMPTY = 0
 ONE_PINT = 20
 HALF_PINT = 10
 
-class PintGlass
-  constructor: ->
-    @volume = EMPTY
+class Glass
+  constructor: (@size, @volume = 0) ->
   fill: -> 
-    @volume = ONE_PINT
+    @volume = @size
   _drink: (amount) ->
     if amount > @volume
       left_over = @volume
@@ -21,22 +20,13 @@ class PintGlass
   quaff: -> @_drink 4
   down_in_one: -> @_drink @volume
 
-class Half_Pint_Glass
+class PintGlass extends Glass
   constructor: ->
-    @volume = EMPTY
-  fill: ->
-    @volume = HALF_PINT
-  _drink: (amount) ->
-    if amount > @volume
-      left_over = @volume
-      @volume = EMPTY
-      left_over
-    else
-      @volume = @volume - amount
-      amount
-  drink: -> @_drink 1 
-  quaff: -> @_drink 4
-  down_in_one: -> @_drink @volume
+    super ONE_PINT
+
+class Half_Pint_Glass extends Glass
+  constructor: ->
+    super HALF_PINT
 
 
 describe 'An empty Pint Glass', ->
