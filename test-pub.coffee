@@ -2,6 +2,7 @@ should = require('chai').should()
 
 EMPTY = 0
 ONE_PINT = 20
+HALF_PINT = 10
 
 class PintGlass
   constructor: ->
@@ -24,7 +25,7 @@ class Half_Pint_Glass
   constructor: ->
     @volume = EMPTY
   fill: ->
-    @volume = 10
+    @volume = HALF_PINT
   _drink: (amount) ->
     if amount > @volume
       left_over = @volume
@@ -36,6 +37,7 @@ class Half_Pint_Glass
   drink: -> @_drink 1 
   quaff: -> @_drink 4
   down_in_one: -> @_drink @volume
+
 
 describe 'An empty Pint Glass', ->
   glass = new PintGlass 
@@ -112,7 +114,7 @@ describe 'A full half-pint glass', ->
     glass.fill()
   
   it 'should contain ten fluid ounces of liquid', ->
-    glass.volume.should.equal 10
+    glass.volume.should.equal HALF_PINT
 
   it 'should when drunk from return 1 fluid ounce and contain 9 fluid ounces', ->
     glass.drink().should.equal 1
@@ -123,5 +125,5 @@ describe 'A full half-pint glass', ->
     glass.volume.should.equal 6
 
   it 'should when downed-in-one return 10oz and then be empty', ->
-    glass.down_in_one().should.equal 10
+    glass.down_in_one().should.equal HALF_PINT
     glass.volume.should.equal EMPTY
