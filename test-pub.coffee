@@ -11,6 +11,9 @@ class Glass
     else # return volume drunk
       @volume--
       1
+  quaff: ->
+    0
+
 
 describe 'An empty glass', ->
   it 'should contain no liquid', ->
@@ -20,6 +23,10 @@ describe 'An empty glass', ->
   it 'when drunk from should return no liquid', ->
     my_glass = new Glass 
     my_glass.drink().should.equal 0
+
+  it 'when quaffed from should return no liquid', ->
+    my_glass = new Glass
+    my_glass.quaff().should.equal 0
 
 describe 'A full glass', ->
   it 'should contain 20 fluid ounces', ->
