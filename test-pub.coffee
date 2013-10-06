@@ -8,27 +8,17 @@ class PintGlass
     @volume = EMPTY
   fill: -> 
     @volume = ONE_PINT
-  drink: -> 
-    if @volume is EMPTY
-      EMPTY
-    else # return volume drunk
-      @volume--
-      1
-  quaff: ->
-    if @volume is EMPTY
-      EMPTY
+  _drink: (amount) ->
+    if amount > @volume
+      left_over = @volume
+      @volume = EMPTY
+      left_over
     else
-      if @volume < 4
-        left_over = @volume
-        @volume = EMPTY
-        left_over
-      else
-        @volume -= 4
-        4
-  down_in_one: ->
-    left_over = @volume
-    @volume = EMPTY
-    left_over
+      @volume = @volume - amount
+      amount
+  drink: -> @_drink 1 
+  quaff: -> @_drink 4
+  down_in_one: -> @_drink @volume
 
 
 describe 'An empty Pint Glass', ->
