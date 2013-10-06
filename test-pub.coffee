@@ -12,7 +12,11 @@ class Glass
       @volume--
       1
   quaff: ->
-    0
+    if @volume is 0
+      0
+    else
+      @volume -= 4
+      4
 
 
 describe 'An empty glass', ->
@@ -34,8 +38,15 @@ describe 'A full glass', ->
     my_glass.fill()
     my_glass.volume.should.equal 20
 
-  it 'should when drunk from contain 19 fluid ounces', ->
+  it 'should when drunk from return 1 fluid ounce and contain 19 fluid ounces', ->
     my_glass = new Glass
     my_glass.fill()
     my_glass.drink().should.equal 1
     my_glass.volume.should.equal 19
+
+  it 'should when quaffed from return 4oz and contain 16oz', ->
+    my_glass = new Glass
+    my_glass.fill()
+    my_glass.quaff().should.equal 4
+    my_glass.volume.should.equal 16
+
