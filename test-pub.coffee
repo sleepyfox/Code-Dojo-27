@@ -32,7 +32,7 @@ class Half_Pint_Glass extends Glass
     super HALF_PINT
 
 
-describe 'An empty Pint Glass', ->
+describe 'An empty pint glass', ->
   glass = new PintGlass 
 
   it 'should contain no liquid', ->
@@ -47,7 +47,8 @@ describe 'An empty Pint Glass', ->
   it 'when downed-in-one should return no liquid', ->
     glass.down_in_one().should.equal EMPTY
 
-describe 'A full Pint Glass', ->
+
+describe 'A full pint glass', ->
   glass = new PintGlass
   beforeEach ->
     glass.fill()
@@ -69,7 +70,8 @@ describe 'A full Pint Glass', ->
     glass.down_in_one().should.equal ONE_PINT
     glass.volume.should.equal EMPTY
 
-describe 'A nearly empty Pint Glass', ->
+
+describe 'A nearly empty pint glass', ->
   glass = new PintGlass
   beforeEach ->
     glass.volume = QUAFF - ONE_OZ
@@ -84,6 +86,7 @@ describe 'A nearly empty Pint Glass', ->
   it 'when downed-in-one should return 3oz and should then be empty', ->
     glass.down_in_one().should.equal QUAFF - ONE_OZ
     glass.volume.should.equal EMPTY
+
 
 describe 'An empty half-pint glass', ->
   glass = new Half_Pint_Glass
@@ -100,6 +103,7 @@ describe 'An empty half-pint glass', ->
 
   it 'when downed-in-one should return no liquid', ->
     glass.down_in_one().should.equal EMPTY
+
 
 describe 'A full half-pint glass', ->
   glass = new Half_Pint_Glass
@@ -120,3 +124,24 @@ describe 'A full half-pint glass', ->
   it 'should when downed-in-one return 10oz and then be empty', ->
     glass.down_in_one().should.equal HALF_PINT
     glass.volume.should.equal EMPTY
+
+describe 'A nearly empty half-pint Glass', ->
+  glass = new Half_Pint_Glass
+  beforeEach ->
+    glass.volume = QUAFF - ONE_OZ
+
+  it 'should contain 3oz', ->
+    glass.volume.should.equal QUAFF - ONE_OZ
+
+  it 'when drunk from should return 1oz and contain 3oz', ->
+    glass.drink().should.equal ONE_OZ
+    glass.volume.should.equal 2 * ONE_OZ
+
+  it 'when quaffed from should only return 3oz, and should then be empty', ->
+    glass.quaff().should.equal QUAFF - ONE_OZ
+    glass.volume.should.equal EMPTY
+
+  it 'when downed-in-one should return 3oz and should then be empty', ->
+    glass.down_in_one().should.equal QUAFF - ONE_OZ
+    glass.volume.should.equal EMPTY
+ 
