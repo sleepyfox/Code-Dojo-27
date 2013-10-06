@@ -1,8 +1,11 @@
 should = require('chai').should()
 
+# Weights and Measures
 EMPTY = 0
 ONE_PINT = 20
 HALF_PINT = 10
+ONE_OZ = 1
+QUAFF = 4
 
 class Glass
   constructor: (@size, @volume = 0) ->
@@ -16,8 +19,8 @@ class Glass
     else
       @volume = @volume - amount
       amount
-  drink: -> @_drink 1 
-  quaff: -> @_drink 4
+  drink: -> @_drink ONE_OZ
+  quaff: -> @_drink QUAFF
   down_in_one: -> @_drink @volume
 
 class PintGlass extends Glass
@@ -53,13 +56,13 @@ describe 'A full Pint Glass', ->
     glass.volume.should.equal ONE_PINT
 
   it 'should when drunk from return 1 fluid ounce and contain 19 fluid ounces', ->
-    glass.drink().should.equal 1
-    glass.volume.should.equal 19
+    glass.drink().should.equal ONE_OZ
+    glass.volume.should.equal ONE_PINT - ONE_OZ
 
   it 'should when quaffed from return 4oz and contain 16oz', ->
     glass.fill()
-    glass.quaff().should.equal 4
-    glass.volume.should.equal 16
+    glass.quaff().should.equal QUAFF
+    glass.volume.should.equal ONE_PINT - QUAFF
 
   it 'should when downed-in-one return 20oz and then be empty', ->
     glass.fill()
@@ -69,17 +72,17 @@ describe 'A full Pint Glass', ->
 describe 'A nearly empty Pint Glass', ->
   glass = new PintGlass
   beforeEach ->
-    glass.volume = 3
+    glass.volume = QUAFF - ONE_OZ
 
   it 'should contain 3oz', ->
-    glass.volume.should.equal 3
+    glass.volume.should.equal QUAFF - ONE_OZ
 
   it 'when quaffed from should only return 3oz, and should then be empty', ->
-    glass.quaff().should.equal 3
+    glass.quaff().should.equal QUAFF - ONE_OZ
     glass.volume.should.equal EMPTY
 
   it 'when downed-in-one should return 3oz and should then be empty', ->
-    glass.down_in_one().should.equal 3
+    glass.down_in_one().should.equal QUAFF - ONE_OZ
     glass.volume.should.equal EMPTY
 
 describe 'An empty half-pint glass', ->
@@ -107,12 +110,12 @@ describe 'A full half-pint glass', ->
     glass.volume.should.equal HALF_PINT
 
   it 'should when drunk from return 1 fluid ounce and contain 9 fluid ounces', ->
-    glass.drink().should.equal 1
-    glass.volume.should.equal 9
+    glass.drink().should.equal ONE_OZ
+    glass.volume.should.equal HALF_PINT - ONE_OZ
 
   it 'should when quaffed from return 4oz and contain 6oz', ->
-    glass.quaff().should.equal 4
-    glass.volume.should.equal 6
+    glass.quaff().should.equal QUAFF
+    glass.volume.should.equal HALF_PINT - QUAFF
 
   it 'should when downed-in-one return 10oz and then be empty', ->
     glass.down_in_one().should.equal HALF_PINT
