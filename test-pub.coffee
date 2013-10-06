@@ -80,6 +80,7 @@ describe 'An empty half-pint glass', ->
       @volume = EMPTY
     drink: -> EMPTY
     quaff: -> EMPTY
+    down_in_one: -> EMPTY
 
   glass = new Half_Pint_Glass
 
@@ -92,3 +93,6 @@ describe 'An empty half-pint glass', ->
 
   it 'when quaffed from should return no liquid', ->
     glass.quaff().should.equal EMPTY
+
+  it 'when downed-in-one should return no liquid', ->
+    glass.down_in_one().should.equal EMPTY
