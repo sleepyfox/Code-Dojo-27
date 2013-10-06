@@ -48,7 +48,8 @@ describe 'An empty Pint Glass', ->
 
 describe 'A full Pint Glass', ->
   glass = new PintGlass
-  glass.fill()
+  beforeEach ->
+    glass.fill()
 
   it 'should contain 20 fluid ounces', ->
     glass.volume.should.equal ONE_PINT
@@ -69,7 +70,8 @@ describe 'A full Pint Glass', ->
 
 describe 'A nearly empty Pint Glass', ->
   glass = new PintGlass
-  glass.volume = 3
+  beforeEach ->
+    glass.volume = 3
 
   it 'should contain 3oz', ->
     glass.volume.should.equal 3
@@ -79,7 +81,6 @@ describe 'A nearly empty Pint Glass', ->
     glass.volume.should.equal EMPTY
 
   it 'when downed-in-one should return 3oz and should then be empty', ->
-    glass.volume = 3
     glass.down_in_one().should.equal 3
     glass.volume.should.equal EMPTY
 
