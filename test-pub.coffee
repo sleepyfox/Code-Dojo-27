@@ -56,14 +56,13 @@ describe 'A full Pint Glass', ->
     glass.volume.should.equal 16
 
 describe 'A nearly empty Pint Glass', ->
+  glass = new PintGlass
+  glass.volume = 3
+
   it 'should contain 3oz', ->
-    glass = new PintGlass
-    glass.volume = 3
     glass.volume.should.equal 3
 
   it 'when quaffed from should only return 3oz, and should then be empty', ->
-    glass = new PintGlass
-    glass.volume = 3
     glass.quaff().should.equal 3
     glass.volume.should.equal EMPTY
 
