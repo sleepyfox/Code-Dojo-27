@@ -107,25 +107,21 @@ describe 'An empty half-pint glass', ->
     glass.down_in_one().should.equal EMPTY
 
 describe 'A full half-pint glass', ->
-  it 'should contain ten fluid ounces of liquid', ->
-    glass = new Half_Pint_Glass
+  glass = new Half_Pint_Glass
+  beforeEach ->
     glass.fill()
+  
+  it 'should contain ten fluid ounces of liquid', ->
     glass.volume.should.equal 10
 
   it 'should when drunk from return 1 fluid ounce and contain 9 fluid ounces', ->
-    glass = new Half_Pint_Glass
-    glass.fill()
     glass.drink().should.equal 1
     glass.volume.should.equal 9
 
   it 'should when quaffed from return 4oz and contain 6oz', ->
-    glass = new Half_Pint_Glass
-    glass.fill()
     glass.quaff().should.equal 4
     glass.volume.should.equal 6
 
   it 'should when downed-in-one return 10oz and then be empty', ->
-    glass = new Half_Pint_Glass
-    glass.fill()
     glass.down_in_one().should.equal 10
     glass.volume.should.equal EMPTY
