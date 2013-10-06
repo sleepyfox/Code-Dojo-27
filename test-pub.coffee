@@ -25,9 +25,17 @@ class Half_Pint_Glass
     @volume = EMPTY
   fill: ->
     @volume = 10
-  drink: -> EMPTY
-  quaff: -> EMPTY
-  down_in_one: -> EMPTY
+  _drink: (amount) ->
+    if amount > @volume
+      left_over = @volume
+      @volume = EMPTY
+      left_over
+    else
+      @volume = @volume - amount
+      amount
+  drink: -> @_drink 1 
+  quaff: -> @_drink 4
+  down_in_one: -> @_drink @volume
 
 describe 'An empty Pint Glass', ->
   glass = new PintGlass 
@@ -104,3 +112,8 @@ describe 'A full half-pint glass', ->
     glass.fill()
     glass.volume.should.equal 10
 
+  it 'should when drunk from return 1 fluid ounce and contain 9 fluid ounces', ->
+    glass = new Half_Pint_Glass
+    glass.fill()
+    glass.drink().should.equal 1
+    glass.volume.should.equal 9
