@@ -26,7 +26,9 @@ class PintGlass
         @volume -= 4
         4
   down_in_one: ->
-    EMPTY
+    left_over = @volume
+    @volume = EMPTY
+    left_over
 
 
 describe 'An empty Pint Glass', ->
@@ -59,6 +61,11 @@ describe 'A full Pint Glass', ->
     glass.fill()
     glass.quaff().should.equal 4
     glass.volume.should.equal 16
+
+  it 'should when downed-in-one return 20oz and then be empty', ->
+    glass.fill()
+    glass.down_in_one().should.equal ONE_PINT
+    glass.volume.should.equal EMPTY
 
 describe 'A nearly empty Pint Glass', ->
   glass = new PintGlass
