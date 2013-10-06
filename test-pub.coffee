@@ -25,6 +25,8 @@ class PintGlass
       else
         @volume -= 4
         4
+  down_in_one: ->
+    EMPTY
 
 
 describe 'An empty Pint Glass', ->
@@ -38,6 +40,9 @@ describe 'An empty Pint Glass', ->
 
   it 'when quaffed from should return no liquid', ->
     glass.quaff().should.equal EMPTY
+
+  it 'when downed-in-one should return no liquid', ->
+    glass.down_in_one().should.equal EMPTY
 
 describe 'A full Pint Glass', ->
   glass = new PintGlass
