@@ -78,4 +78,8 @@ describe 'A nearly empty Pint Glass', ->
     glass.quaff().should.equal 3
     glass.volume.should.equal EMPTY
 
+  it 'when downed-in-one should return 3oz and should then be empty', ->
+    glass.volume = 3
+    glass.down_in_one().should.equal 3
+    glass.volume.should.equal EMPTY
 
