@@ -20,6 +20,14 @@ class PintGlass
   quaff: -> @_drink 4
   down_in_one: -> @_drink @volume
 
+class Half_Pint_Glass
+  constructor: ->
+    @volume = EMPTY
+  fill: ->
+    @volume = 10
+  drink: -> EMPTY
+  quaff: -> EMPTY
+  down_in_one: -> EMPTY
 
 describe 'An empty Pint Glass', ->
   glass = new PintGlass 
@@ -75,13 +83,6 @@ describe 'A nearly empty Pint Glass', ->
     glass.volume.should.equal EMPTY
 
 describe 'An empty half-pint glass', ->
-  class Half_Pint_Glass
-    constructor: ->
-      @volume = EMPTY
-    drink: -> EMPTY
-    quaff: -> EMPTY
-    down_in_one: -> EMPTY
-
   glass = new Half_Pint_Glass
 
   it 'should contain no liquid', ->
@@ -96,3 +97,10 @@ describe 'An empty half-pint glass', ->
 
   it 'when downed-in-one should return no liquid', ->
     glass.down_in_one().should.equal EMPTY
+
+describe 'A full half-pint glass', ->
+  it 'should contain ten fluid ounces of liquid', ->
+    glass = new Half_Pint_Glass
+    glass.fill()
+    glass.volume.should.equal 10
+
