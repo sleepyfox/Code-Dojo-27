@@ -15,11 +15,16 @@ class PintGlass
     if @volume is 0
       0
     else
-      @volume -= 4
-      4
+      if @volume < 4
+        left_over = @volume
+        @volume = 0
+        left_over
+      else
+        @volume -= 4
+        4
 
 
-describe 'An empty PintGlass', ->
+describe 'An empty Pint Glass', ->
   glass = new PintGlass 
 
   it 'should contain no liquid', ->
@@ -31,7 +36,7 @@ describe 'An empty PintGlass', ->
   it 'when quaffed from should return no liquid', ->
     glass.quaff().should.equal 0
 
-describe 'A full PintGlass', ->
+describe 'A full Pint Glass', ->
   glass = new PintGlass
   glass.fill()
 
@@ -46,4 +51,17 @@ describe 'A full PintGlass', ->
     glass.fill()
     glass.quaff().should.equal 4
     glass.volume.should.equal 16
+
+describe 'A nearly empty Pint Glass', ->
+  it 'should contain 3oz', ->
+    glass = new PintGlass
+    glass.volume = 3
+    glass.volume.should.equal 3
+
+  it 'when quaffed from should only return 3oz, and should then be empty', ->
+    glass = new PintGlass
+    glass.volume = 3
+    glass.quaff().should.equal 3
+    glass.volume.should.equal 0
+
 
