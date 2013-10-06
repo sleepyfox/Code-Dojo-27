@@ -117,3 +117,15 @@ describe 'A full half-pint glass', ->
     glass.fill()
     glass.drink().should.equal 1
     glass.volume.should.equal 9
+
+  it 'should when quaffed from return 4oz and contain 6oz', ->
+    glass = new Half_Pint_Glass
+    glass.fill()
+    glass.quaff().should.equal 4
+    glass.volume.should.equal 6
+
+  it 'should when downed-in-one return 10oz and then be empty', ->
+    glass = new Half_Pint_Glass
+    glass.fill()
+    glass.down_in_one().should.equal 10
+    glass.volume.should.equal EMPTY
