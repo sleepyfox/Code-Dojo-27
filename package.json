@@ -1,15 +1,16 @@
 {
   "name": "27-code-dojo-beer",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A pub-based code kata example",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --compilers coffee:coffee-script -R spec test-*.coffee"
+    "test": "mocha --compilers coffee:coffee-script/register -R spec test-*.coffee"
   },
   "author": "@sleepyfox",
   "license": "see LICENSE file",
-  "dependencies": {
-    "mocha": "~1.13.0",
-    "chai": "~1.8.0"
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "coffee-script": "^1.9.3",
+    "mocha": "^2.2.5"
   }
 }
