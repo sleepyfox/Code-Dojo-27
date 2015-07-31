@@ -4,13 +4,15 @@
   "description": "A pub-based code kata example",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --compilers coffee:coffee-script/register -R spec test-*.coffee"
+    "test": "npm run lint && mocha --compilers coffee:coffee-script/register -R spec test-*.coffee",
+    "lint": "coffeelint test-*.coffee"
   },
   "author": "@sleepyfox",
   "license": "see LICENSE file",
   "devDependencies": {
     "chai": "^3.2.0",
     "coffee-script": "^1.9.3",
+    "coffeelint": "^1.10.1",
     "mocha": "^2.2.5"
   }
 }
