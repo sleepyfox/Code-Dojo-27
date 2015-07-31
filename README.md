@@ -4,9 +4,7 @@ This is my worked example from the 27th meeting of the London Code Dojo. Feel fr
 
 The tests can be run from the command-line with [mocha](http://visionmedia.github.io/mocha/):
 	
-	mocha --compilers coffee:coffee-script -R spec test-*.coffee
-
-You can also use this with the **-w** flag to have mocha watch for file changes and re-run the tests (this obviates the need for watchr or similar tools).
+	npm test
 
 The source of the kata I remember as Dave Thomas's Pragmatic Programmers site, but I can't find it there now, strange. You can find out more about the London Code Dojo at our [homepage](http://www.meetup.com/London-Code-Dojo/).
  
@@ -20,6 +18,7 @@ When the landlord fills the glass, the weights and measures act of 1963 regulate
 
 Write a simple application to keep track of customer's beer glasses and how much fluid they contain. 
 
-When you've done this then extend your solution for half-pint glasses
-When you've done this then extend your solution for three-pint jugs
+When you've done this then extend your solution for half-pint glasses.
+
+When you've done this then extend your solution for three-pint jugs.
 
