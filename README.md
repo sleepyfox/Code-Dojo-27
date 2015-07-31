@@ -2,7 +2,7 @@ Code Dojo 27
 ============
 This is my worked example from the 27th meeting of the London Code Dojo. Feel free to play around with it. I've used Node.js and CoffeeScript with the Mocha testing library and the Chai assertion library.
 
-The tests can be run from the command-line with [mocha](http://visionmedia.github.io/mocha/):
+The tests can be run from the command-line with [mocha](http://visionmedia.github.io/mocha/) and [chai](http://chaijs.com/):
 	
 	npm test
 
