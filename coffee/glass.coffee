@@ -27,6 +27,15 @@ class Half_Pint_Glass extends Glass
 class Jug extends Glass
   constructor: ->
     super Measures.three_pints
+  fill_up: (glass) ->
+    if (glass.size > @volume)
+      glass.volume += @volume
+      @volume = 0
+      glass
+    else
+      glass.fill()
+      @volume -= glass.size
+      glass
 
 module.exports = 
   Pint_Glass: Pint_Glass
