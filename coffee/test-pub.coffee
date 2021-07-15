@@ -44,8 +44,10 @@ describe 'A full pint glass', ->
 
 describe 'A nearly empty pint glass', ->
   glass = new Glass.Pint_Glass
-  beforeEach ->
-    glass.volume = 4 * Measures.one_fl_oz - Measures.one_fl_oz
+  beforeEach -> # Glass contains 3 fl oz
+    glass.fill()
+    glass.quaff() for [1..4]
+    glass.drink()
 
   it 'should contain 3 fl oz', ->
     glass.volume.should.equal 4 * Measures.one_fl_oz - Measures.one_fl_oz
@@ -80,7 +82,7 @@ describe 'A full half-pint glass', ->
   glass = new Glass.Half_Pint_Glass
   beforeEach ->
     glass.fill()
-  
+
   it 'should contain ten fluid ounces of liquid', ->
     glass.volume.should.equal Measures.half_pint
 
@@ -98,8 +100,10 @@ describe 'A full half-pint glass', ->
 
 describe 'A nearly empty half-pint Glass', ->
   glass = new Glass.Half_Pint_Glass
-  beforeEach ->
-    glass.volume = 4 * Measures.one_fl_oz - Measures.one_fl_oz
+  beforeEach -> # Glass contains 3 fl oz
+    glass.fill()
+    glass.quaff()
+    glass.drink() for [1..3]
 
   it 'should contain 3 fl oz', ->
     glass.volume.should.equal 4 * Measures.one_fl_oz - Measures.one_fl_oz
@@ -115,7 +119,7 @@ describe 'A nearly empty half-pint Glass', ->
   it 'when downed-in-one should return 3 fl oz and should then be empty', ->
     glass.down_in_one().should.equal 4 * Measures.one_fl_oz - Measures.one_fl_oz
     glass.volume.should.equal Measures.empty
- 
+
 describe 'An empty jug', ->
   glass = new Glass.Jug
 
@@ -137,7 +141,7 @@ describe 'A full three-pint jug', ->
   glass = new Glass.Jug
   beforeEach ->
     glass.fill()
-  
+
   it 'should contain three pints of liquid', ->
     glass.volume.should.equal Measures.three_pints
 
@@ -155,8 +159,10 @@ describe 'A full three-pint jug', ->
 
 describe 'A nearly empty three-pint jug', ->
   glass = new Glass.Jug
-  beforeEach ->
-    glass.volume = 4 * Measures.one_fl_oz - Measures.one_fl_oz
+  beforeEach -> # Glass contains 3 fl oz
+    glass.fill()
+    glass.quaff() for [1..14]
+    glass.drink()
 
   it 'should contain 3 fl oz', ->
     glass.volume.should.equal 4 * Measures.one_fl_oz - Measures.one_fl_oz
