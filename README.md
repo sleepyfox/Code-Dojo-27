@@ -23,7 +23,7 @@ When you've done this then extend your solution for half-pint glasses.
 ## Additional bonus question
 <details>
   <summary>Click for additional additional points!</summary>
-When you've done this then extend your solution for three-pint jugs. Of course we don't drink from the 3-pint jugs (not being [Barbarians](https://www.dmarge.com/wp-content/uploads/2015/12/Drinking-Beer.jpg)), but rather use them to fill up our existing glasses.
+When you've done this then extend your solution for three-pint jugs. Of course we don't drink from the 3-pint jugs - not being <a href="https://www.dmarge.com/wp-content/uploads/2015/12/Drinking-Beer.jpg">Barbarians</a> - but rather use them to fill up our existing glasses.
 </details>
 
 ## License
